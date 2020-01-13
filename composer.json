@@ -1,0 +1,38 @@
+{
+  "name": "christoph-kluge/bref-sqs-laravel",
+  "description": "Laravel adapter for bref",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Christoph Kluge",
+      "email": "work@christoph-kluge.eu"
+    }
+  ],
+  "require": {
+    "bref/bref": "^0.5"
+  },
+  "require-dev": {
+    "laravel/framework": "^5.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Sikei\\Bref\\Sqs\\Laravel\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Sikei\\Bref\\Tests\\Sqs\\Laravel\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Barryvdh\\Debugbar\\ServiceProvider"
+      ],
+      "aliases": {
+        "Debugbar": "Barryvdh\\Debugbar\\Facade"
+      }
+    }
+  }
+}
