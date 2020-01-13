@@ -2,6 +2,11 @@
 
 Laravel adapter for bref
 
+TODOs: 
+
+* [ ] Dead-Letter-Queue support (native by reading the AWS settings or custom?)
+* [ ] Test and document `serverless.yml` to automatically setup lambda to receive sqs events  
+
 ## Example artisan.php
 
 ```php
@@ -24,4 +29,6 @@ functions:
         handler: artisan.php
         environment:
             ARTISAN_COMMAND: 'sqs:work sqs --tries=3 --sleep=1 --delay=1'
+        layers:
+            - ${bref:layer.php-73}
 ```
