@@ -1,7 +1,10 @@
 <?php namespace Sikei\Bref\Sqs\Laravel\Commands;
 
 use Bref\Runtime\LambdaRuntime;
+use Illuminate\Console\Command;
+use Illuminate\Contracts\Cache\Repository as Cache;
 use Illuminate\Queue\Console\WorkCommand;
+use Illuminate\Queue\Worker;
 use Sikei\Bref\Sqs\Laravel\Queue\Connector;
 use Sikei\Bref\Sqs\Laravel\Queue\Queue;
 
@@ -24,6 +27,20 @@ class SqsWorkCommand extends WorkCommand
     /** @var LambdaRuntime */
     protected $lambdaRuntime;
 
+    /** @var \Illuminate\Queue\Worker */
+    protected $worker;
+
+    /** @var \Illuminate\Contracts\Cache\Repository */
+    protected $cache;
+
+    public function __construct(Worker $worker, Cache $cache)
+    {
+        Command::__construct();
+
+        $this->cache = $cache;
+        $this->worker = $worker;
+    }
+
     public function handle()
     {
         $this->lambdaRuntime = LambdaRuntime::fromEnvironmentVariable();
@@ -38,7 +55,7 @@ class SqsWorkCommand extends WorkCommand
 
     protected function runWorker($connection, $queueName)
     {
-        $this->worker->setCache($this->laravel['cache']->driver());
+        $this->worker->setCache($this->cache);
 
         /** @var Queue $queue */
         $queue = $this->worker->getManager()->connection($connection);
