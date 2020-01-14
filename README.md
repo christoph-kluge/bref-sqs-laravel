@@ -4,7 +4,8 @@ Laravel adapter for bref
 
 TODOs: 
 
-* [ ] Dead-Letter-Queue support (native by reading the AWS settings or custom?)
+* [ ] Partial failures should not "re-send" new messages, instead we should delete successful messages and throw an exception if at least 1 job failed inside the batchsize
+* [ ] (In case the above point will work - this becames obsolete) Dead-Letter-Queue support (native by reading the AWS settings or custom?)
 
 ## Example artisan.php
 
