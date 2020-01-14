@@ -2,6 +2,14 @@
 
 Laravel adapter for bref
 
+## Supported laravel versions
+
+| Version | Branch | Status   |
+| ---     | ---    | ---      |
+| < 5.8   | master | untested |
+| 5.8     | master | works    |
+| 6.x     | master | wip      |
+
 ## TODOs
 
 This is a small list of things (@TODO: move them to issues) 
