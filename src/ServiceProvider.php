@@ -4,17 +4,19 @@ use Sikei\Bref\Sqs\Laravel\Commands\SqsWorkCommand;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
+    public function register()
     {
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                SqsWorkCommand::class,
-            ]);
-        }
+        $this->app->singleton('command.sqs.work', function ($app) {
+            return new SqsWorkCommand($app['queue.worker'], $app['cache.store']);
+        });
+
+        $this->commands(['command.sqs.work']);
+    }
+
+    public function provides()
+    {
+        return [
+            'command.sqs.work',
+        ];
     }
 }
