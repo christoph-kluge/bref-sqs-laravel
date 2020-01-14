@@ -2,7 +2,9 @@
 
 Laravel adapter for bref
 
-TODOs: 
+## TODOs
+
+This is a small list of things (@TODO: move them to issues) 
 
 * [ ] Partial failures should not "re-send" new messages, instead we should delete successful messages and throw an exception if at least 1 job failed inside the batchsize
 * [ ] (In case the above point will work - this becames obsolete) Dead-Letter-Queue support (native by reading the AWS settings or custom?)
@@ -36,3 +38,12 @@ functions:
                   arn: arn:aws:sqs:region:XXXXXX:myQueue
                   batchSize: 10
 ```
+
+## References / Links / Insights
+
+Useful links and insights about this topic: 
+
+* https://serverless.com/framework/docs/providers/aws/guide/serverless.yml/
+* https://github.com/brefphp/bref/issues/421
+* https://nordcloud.com/amazon-sqs-as-a-lambda-event-source/
+* https://lumigo.io/blog/sqs-and-lambda-the-missing-guide-on-failure-modes/
