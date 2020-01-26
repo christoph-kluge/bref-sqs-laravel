@@ -43,7 +43,18 @@ functions:
             - ${bref:layer.php-73}
         events:
             - sqs:
-                  arn: arn:aws:sqs:region:XXXXXX:myQueue
+                  arn: arn:aws:sqs:region:XXXXXX:default-queue
+                  batchSize: 10
+
+    another-queue:
+        handler: artisan.php
+        environment:
+            ARTISAN_COMMAND: 'sqs:work sqs --queue=another-queue --tries=3 --sleep=1 --delay=1'
+        layers:
+            - ${bref:layer.php-73}
+        events:
+            - sqs:
+                  arn: arn:aws:sqs:region:XXXXXX:another-queue
                   batchSize: 10
 ```
 
