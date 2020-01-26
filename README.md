@@ -1,6 +1,7 @@
 # bref-sqs-laravel
 
-Laravel adapter for bref
+This projects aims to add native laravel support to use Amazon SQS with AWS Lambdas. Thanks to brefphp/bref which does
+the heavy lifing here. 
 
 ## Supported laravel versions
 
@@ -8,19 +9,39 @@ Laravel adapter for bref
 | ---     | ---    | ---      |
 | < 5.8   | master | untested |
 | 5.8     | master | works    |
-| 6.x     | master | wip      |
+| 6.x     | master | works    |
 
-## TODOs
+## Install
 
-This is a small list of things (@TODO: move them to issues) 
+To install via Composer, use the command below. It will automatically detect the latest version and bind it with ^.
 
-* [ ] Partial failures should not "re-send" new messages, instead we should delete successful messages and throw an exception if at least 1 job failed inside the batchsize
-* [ ] (In case the above point will work - this becames obsolete) Dead-Letter-Queue support (native by reading the AWS settings or custom?)
+```
+composer require christoph-kluge/bref-sqs-laravel
+```
 
-## Example artisan.php
+This package will automatically register the ServiceProvider within your laravel application.  
+
+## Usage instructions
+
+1. Configure your application to use SQS queues (please refer to the official laravel documentation)
+2. Install this package through composer 
+3. Add the example `artisan.php` to the root directory of your project
+4. Update your `serverless.yml` with a new handler using the `artisan.php`
+
+### Example artisan.php
 
 ```php
-$kernel = $app->make(Kernel::class);
+#!/opt/bin/php
+<?php declare(strict_types=1);
+
+use App\Console\Kernel;
+
+$appRoot = getenv('LAMBDA_TASK_ROOT');
+require_once $appRoot . '/vendor/autoload.php';
+require_once $appRoot . '/bootstrap/app.php';
+
+/** @var Kernel $kernel */
+$kernel = app(\Illuminate\Contracts\Console\Kernel::class);
 $kernel->bootstrap();
 
 $status = $kernel->handle(
@@ -29,9 +50,10 @@ $status = $kernel->handle(
 );
 
 $kernel->terminate($input, $status);
+
 ```
 
-## Example serverless.yml
+### Example serverless.yml
 
 ```yaml
 functions:
@@ -57,6 +79,12 @@ functions:
                   arn: arn:aws:sqs:region:XXXXXX:another-queue
                   batchSize: 10
 ```
+
+## TODOs
+
+* [ ] Test FIFO queues
+* [ ] Partial failures should not "re-send" new messages, instead we should delete successful messages and throw an exception if at least 1 job failed inside the batchsize
+* [ ] (In case the above point will work - this becames obsolete) Dead-Letter-Queue support (native by reading the AWS settings or custom?)
 
 ## References / Links / Insights
 
