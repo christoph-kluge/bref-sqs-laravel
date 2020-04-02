@@ -1,15 +1,19 @@
-# bref-sqs-laravel
+# Serverless laravel queues on AWS Lambda (SQS driver)
 
-This projects aims to add native laravel support to use Amazon SQS with AWS Lambdas. Thanks to brefphp/bref which does
-the heavy lifing here. 
+Do you have scaling problems with your laravel queues? Install, deploy and bother less!
+
+Thanks to the severless approach it's very easy to scale parts of your software.
+This projects adds native laravel queue support.
+
+Thanks to `brefphp/bref` and `serverless/serverless` which do the heavy lifing here.
 
 ## Supported laravel versions
 
 | Version | Branch | Status   |
 | ---     | ---    | ---      |
+| 6.x     | master | verified |
+| 5.8     | master | verified |
 | < 5.8   | master | untested |
-| 5.8     | master | works    |
-| 6.x     | master | works    |
 
 ## Install
 
@@ -19,7 +23,7 @@ To install via Composer, use the command below. It will automatically detect the
 composer require christoph-kluge/bref-sqs-laravel
 ```
 
-This package will automatically register the ServiceProvider within your laravel application.  
+This package will automatically register the ServiceProvider within your laravel application.
 
 ## Usage instructions
 
