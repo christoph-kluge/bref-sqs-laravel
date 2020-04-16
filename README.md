@@ -9,11 +9,12 @@ Thanks to `brefphp/bref` and `serverless/serverless` which do the heavy lifing h
 
 ## Supported laravel versions
 
-| Version | Branch | Status   |
-| ---     | ---    | ---      |
-| 6.x     | master | verified |
-| 5.8     | master | verified |
-| < 5.8   | master | untested |
+| Version | Branch | Status    |
+| ---     | ---    | ---       |
+| 7.x     | master | supported |
+| 6.x     | master | supported |
+| 5.8     | master | supported |
+| < 5.8   | master | unknown   |
 
 ## Install
 
