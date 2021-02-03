@@ -13,7 +13,7 @@
     "bref/bref": "^0.5"
   },
   "require-dev": {
-    "laravel/framework": "^5.8"
+    "laravel/framework": "^5.8 || ^6.0"
   },
   "autoload": {
     "psr-4": {
