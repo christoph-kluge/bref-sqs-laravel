@@ -7,6 +7,14 @@ This projects adds native laravel queue support.
 
 Thanks to `brefphp/bref` and `serverless/serverless` which do the heavy lifing here.
 
+## Supported bref versions
+
+| Version | Branch | Status                       |
+| ---     | ---    | ---                          |
+| 1.2.x   | master | supported                    |
+| 1.1.x   | master | untested - perhaps supported |
+| 0.5.x   | master | supported                    |
+
 ## Supported laravel versions
 
 | Version | Branch | Status    |
