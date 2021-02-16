@@ -60,7 +60,11 @@ class SqsWorkCommand extends WorkCommand
     protected function runWorker($connection, $queueName)
     {
         $this->worker->setCache($this->cache);
-        $this->worker->setName($this->option('name'));
+
+        // Adds L7 backward-compatibility and support L8+
+        if (method_exists($this->worker, 'setName')) {
+            $this->worker->setName($this->option('name'));
+        }
 
         /** @var Queue $queue */
         $queue = $this->worker->getManager()->connection($connection);

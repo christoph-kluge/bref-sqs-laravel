@@ -10,8 +10,7 @@
     }
   ],
   "require": {
-    "bref/bref": "^0.5|^1.2.0",
-    "laravel/framework": "^8"
+    "bref/bref": "^0.5|^1.2.0"
   },
   "require-dev": {
   },
