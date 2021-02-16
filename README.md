@@ -11,6 +11,7 @@ Thanks to `brefphp/bref` and `serverless/serverless` which do the heavy lifing h
 
 | Version | Branch | Status    |
 | ---     | ---    | ---       |
+| 8.x     | master | supported |
 | 7.x     | master | supported |
 | 6.x     | master | supported |
 | 5.8     | master | supported |
