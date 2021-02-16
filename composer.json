@@ -10,10 +10,10 @@
     }
   ],
   "require": {
-    "bref/bref": "^0.5|^1.2.0"
+    "bref/bref": "^0.5|^1.2.0",
+    "laravel/framework": "^8"
   },
   "require-dev": {
-    "laravel/framework": "^5.8"
   },
   "autoload": {
     "psr-4": {

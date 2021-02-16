@@ -1,4 +1,6 @@
-<?php namespace Sikei\Bref\Sqs\Laravel;
+<?php
+
+namespace Sikei\Bref\Sqs\Laravel;
 
 use Sikei\Bref\Sqs\Laravel\Commands\SqsWorkCommand;
 
