@@ -48,13 +48,11 @@ This package will automatically register the ServiceProvider within your laravel
 #!/opt/bin/php
 <?php declare(strict_types=1);
 
-use App\Console\Kernel;
-
 $appRoot = getenv('LAMBDA_TASK_ROOT');
 require_once $appRoot . '/vendor/autoload.php';
 require_once $appRoot . '/bootstrap/app.php';
 
-/** @var Kernel $kernel */
+/** @var \Illuminate\Contracts\Console\Kernel $kernel */
 $kernel = app(\Illuminate\Contracts\Console\Kernel::class);
 $kernel->bootstrap();
 
@@ -92,6 +90,24 @@ functions:
             - sqs:
                   arn: arn:aws:sqs:region:XXXXXX:another-queue
                   batchSize: 10
+```
+
+## AWS Permissions - IAM Inline Policy
+
+This are the permissions required to make this package work correctly.
+
+* `sqs:deleteMessage`
+* `sqs:sendMessage`
+* ~~`sqs:changeMessageVisibility`~~ its required by laravel's SqsJob but we're overwriting it so it's not used
+
+This is an example inline policy which you can use.
+
+```yaml
+{
+   "": "",
+   "": "",
+   "": "",
+}
 ```
 
 ## TODOs
