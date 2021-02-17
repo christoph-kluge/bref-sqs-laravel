@@ -92,24 +92,6 @@ functions:
                   batchSize: 10
 ```
 
-## AWS Permissions - IAM Inline Policy
-
-This are the permissions required to make this package work correctly.
-
-* `sqs:deleteMessage`
-* `sqs:sendMessage`
-* ~~`sqs:changeMessageVisibility`~~ its required by laravel's SqsJob but we're overwriting it so it's not used
-
-This is an example inline policy which you can use.
-
-```yaml
-{
-   "": "",
-   "": "",
-   "": "",
-}
-```
-
 ## TODOs
 
 * [ ] Test FIFO queues
