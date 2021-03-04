@@ -68,6 +68,7 @@ class SqsWorkCommand extends WorkCommand
 
         /** @var Queue $queue */
         $queue = $this->worker->getManager()->connection($connection);
+        $queue->setContainer($this->laravel);
 
         while (true) {
             $this->lambdaRuntime->processNextEvent(function (array $event) use ($connection, $queueName, $queue) : array {
