@@ -1,5 +1,6 @@
 <?php namespace Sikei\Bref\Sqs\Laravel\Queue;
 
+use Illuminate\Container\Container;
 use Illuminate\Queue\Queue as BaseQueue;
 use Illuminate\Queue\SqsQueue;
 use Illuminate\Contracts\Queue\Queue as QueueContract;
@@ -13,6 +14,20 @@ class Queue extends BaseQueue implements QueueContract
     public function __construct(SqsQueue $sqq)
     {
         $this->sqs = $sqq;
+    }
+
+    public function setContainer(Container $container)
+    {
+        $this->sqs->setContainer($container);
+
+        parent::setContainer($container);
+    }
+
+    public function setConnectionName($name)
+    {
+        $this->sqs->setConnectionName($name);
+
+        return parent::setConnectionName($name);
     }
 
     public function fill(array $event)
