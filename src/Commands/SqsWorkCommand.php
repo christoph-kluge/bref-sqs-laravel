@@ -48,7 +48,7 @@ class SqsWorkCommand extends WorkCommand
 
     public function handle()
     {
-        $this->lambdaRuntime = LambdaRuntime::fromEnvironmentVariable();
+        $this->lambdaRuntime = LambdaRuntime::fromEnvironmentVariable('function');
 
         // Add custom connector, which will expose the "fill" method for the SQS event
         $this->worker->getManager()->addConnector('sqs', function () {
