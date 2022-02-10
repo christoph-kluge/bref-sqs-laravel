@@ -2,28 +2,30 @@
 
 Do you have scaling problems with your laravel queues? Install, deploy and bother less!
 
-Thanks to the severless approach it's very easy to scale parts of your software.
-This projects adds native laravel queue support.
+Thanks to the severless approach it's very easy to scale parts of your software. This projects adds native laravel queue
+support.
 
 Thanks to `brefphp/bref` and `serverless/serverless` which do the heavy lifing here.
 
 ## Supported bref versions
 
-| Version | Branch | Status                       |
-| ---     | ---    | ---                          |
-| 1.2.x   | master | supported                    |
-| 1.1.x   | master | untested - perhaps supported |
-| 0.5.x   | master | supported                    |
+| Version | Tag | Status                       |
+|---------|-----| ---                          |
+| >=1.3   | ^2.0 | supported                    |
+| 1.2.x   | ^1.0 | supported                    |
+| 1.1.x   | ^0  | untested - perhaps supported |
+| 0.5.x   | 0.0.1 | supported                    |
 
 ## Supported laravel versions
 
-| Version | Branch | Status    |
-| ---     | ---    | ---       |
-| 8.x     | master | supported |
-| 7.x     | master | supported |
-| 6.x     | master | supported |
-| 5.8     | master | supported |
-| < 5.8   | master | unknown   |
+| Laravel Version | Tag           | Status    |
+|-----------------|---------------|-----------|
+| 9.x             | ^2.0          | untested  |
+| 8.x             | ^1.0 and ^2.0 | supported |
+| 7.x             | 0.*           | supported |
+| 6.x             | 0.*           | supported |
+| 5.8             | 0.*           | supported |
+| < 5.8           | -             | unknown   |
 
 ## Install
 
@@ -38,7 +40,7 @@ This package will automatically register the ServiceProvider within your laravel
 ## Usage instructions
 
 1. Configure your application to use SQS queues (please refer to the official laravel documentation)
-2. Install this package through composer 
+2. Install this package through composer
 3. Add the example `artisan.php` to the root directory of your project
 4. Update your `serverless.yml` with a new handler using the `artisan.php`
 
@@ -69,38 +71,40 @@ $kernel->terminate($input, $status);
 
 ```yaml
 functions:
-    queue:
-        handler: artisan.php
-        environment:
-            ARTISAN_COMMAND: 'sqs:work sqs --tries=3 --sleep=1 --delay=1'
-        layers:
-            - ${bref:layer.php-73}
-        events:
-            - sqs:
-                  arn: arn:aws:sqs:region:XXXXXX:default-queue
-                  batchSize: 10
+  queue:
+    handler: artisan.php
+    environment:
+      ARTISAN_COMMAND: 'sqs:work sqs --tries=3 --sleep=1 --delay=1'
+    layers:
+      - ${bref:layer.php-81}
+    events:
+      - sqs:
+          arn: arn:aws:sqs:region:XXXXXX:default-queue
+          batchSize: 10
 
-    another-queue:
-        handler: artisan.php
-        environment:
-            ARTISAN_COMMAND: 'sqs:work sqs --queue=another-queue --tries=3 --sleep=1 --delay=1'
-        layers:
-            - ${bref:layer.php-73}
-        events:
-            - sqs:
-                  arn: arn:aws:sqs:region:XXXXXX:another-queue
-                  batchSize: 10
+  another-queue:
+    handler: artisan.php
+    environment:
+      ARTISAN_COMMAND: 'sqs:work sqs --queue=another-queue --tries=3 --sleep=1 --delay=1'
+    layers:
+      - ${bref:layer.php-81}
+    events:
+      - sqs:
+          arn: arn:aws:sqs:region:XXXXXX:another-queue
+          batchSize: 10
 ```
 
 ## TODOs
 
 * [ ] Test FIFO queues
-* [ ] Partial failures should not "re-send" new messages, instead we should delete successful messages and throw an exception if at least 1 job failed inside the batchsize
-* [ ] (In case the above point will work - this becames obsolete) Dead-Letter-Queue support (native by reading the AWS settings or custom?)
+* [ ] Partial failures should not "re-send" new messages, instead we should delete successful messages and throw an
+  exception if at least 1 job failed inside the batchsize
+* [ ] (In case the above point will work - this becames obsolete) Dead-Letter-Queue support (native by reading the AWS
+  settings or custom?)
 
 ## References / Links / Insights
 
-Useful links and insights about this topic: 
+Useful links and insights about this topic:
 
 * https://serverless.com/framework/docs/providers/aws/guide/serverless.yml/
 * https://github.com/brefphp/bref/issues/421
