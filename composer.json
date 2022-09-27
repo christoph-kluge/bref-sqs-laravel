@@ -3,7 +3,7 @@
   "description": "Serverless Queues for Laravel on AWS Lambda (SQS)",
   "type": "library",
   "license": "MIT",
-  "keywords": ["laravel", "serverless", "queue", "lambda", "sqs", "bref"]
+  "keywords": ["laravel", "serverless", "queue", "lambda", "sqs", "bref"],
   "authors": [
     {
       "name": "Christoph Kluge",
