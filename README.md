@@ -1,4 +1,4 @@
-# Serverless laravel queues on AWS Lambda (SQS driver)
+# Serverless Queues for Laravel on AWS Lambda (SQS driver)
 
 Do you have scaling problems with your laravel queues? Install, deploy and bother less!
 
@@ -20,7 +20,7 @@ Thanks to `brefphp/bref` and `serverless/serverless` which do the heavy lifing h
 
 | Laravel Version | Tag           | Status    |
 |-----------------|---------------|-----------|
-| 9.x             | ^2.0          | untested  |
+| 9.x             | ^2.0          | supported |
 | 8.x             | ^1.0 and ^2.0 | supported |
 | 7.x             | 0.*           | supported |
 | 6.x             | 0.*           | supported |
