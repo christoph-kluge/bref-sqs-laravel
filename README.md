@@ -1,4 +1,4 @@
-# Serverless Queues for Laravel on AWS Lambda (SQS driver)
+# Serverless Queues for Laravel on AWS Lambda (SQS)
 
 Do you have scaling problems with your laravel queues? Install, deploy and bother less!
 
