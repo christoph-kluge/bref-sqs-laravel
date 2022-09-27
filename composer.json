@@ -1,8 +1,9 @@
 {
   "name": "christoph-kluge/bref-sqs-laravel",
-  "description": "Laravel adapter for bref",
+  "description": "Serverless Queues for Laravel on AWS Lambda (SQS)",
   "type": "library",
   "license": "MIT",
+  "keywords": ["laravel", "serverless", "queue", "lambda", "sqs", "bref"]
   "authors": [
     {
       "name": "Christoph Kluge",
